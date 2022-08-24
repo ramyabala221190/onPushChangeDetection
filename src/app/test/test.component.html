@@ -1,0 +1,13 @@
+<form [formGroup]="userForm">
+  <label>ID</label><input type="text" formControlName="id">
+
+  <label>Name</label><input type="text" formControlName="name">
+
+  <label>Age</label><input type="text" formControlName="age">
+</form>
+
+
+
+<button (click)="update()">Update User</button>
+
+<button (click)="create()">Create User</button>
