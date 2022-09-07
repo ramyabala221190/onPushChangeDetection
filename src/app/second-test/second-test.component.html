@@ -1,3 +1,18 @@
-<p>second-test works!</p>
+<h4>SecondTest Component</h4>
 
+<h4>Check if @Input object changes trigger change detection</h4>
 {{user|json}}
+
+<h4>An array push triggers detection because of the DOM event</h4>
+<button (click)="add()">Add to Array</button>
+
+<p>{{arr|json}}</p>
+
+<h4>An array push inside an async call will not trigger change detection</h4>
+<p>Even though the push is inside a dom event, there is no change detection, hence we user
+  async pipe to trigger change detection.
+</p>
+<button (click)="getToDos()">Add ToDo to test change detection inside subscription</button>
+
+<label *ngFor="let todo of todos$|async">{{todo|json}}</label>
+

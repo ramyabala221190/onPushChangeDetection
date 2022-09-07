@@ -13,7 +13,14 @@ export class TestComponent implements OnInit {
   constructor() { }
 
   @Input()user:any;
-  @Output()actionUser=new EventEmitter<any>();
+  @Input()str:string="";
+  @Input()num:number=0;
+  @Input()bool:boolean=false;
+  @Input()date:Date=new Date();
+
+  @Output()updateUser=new EventEmitter<any>();
+  @Output()createUser=new EventEmitter<any>();
+
 
   public userForm=new FormGroup({
     name:new FormControl(""),
@@ -26,21 +33,17 @@ export class TestComponent implements OnInit {
 
   ngOnChanges(changes:SimpleChange){
    if('user' in changes){
-     console.log("ngOnChanges fired");
-      console.log(this.user);
       this.userForm.get('name')?.setValue(this.user.name);
       this.userForm.get('age')?.setValue(this.user.age)
    }
   }
 
-
-
   update(){
-    this.actionUser.emit({value:this.userForm.value,action:"update"}); //pass the updated customer object to the container component
+    this.updateUser.emit(this.userForm.value); //pass the updated customer object to the container component
   }
 
   create(){
-    this.actionUser.emit({value:this.userForm.value,action:"create"});
+    this.createUser.emit(this.userForm.value);
   }
 
 

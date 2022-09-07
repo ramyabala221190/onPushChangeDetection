@@ -1,4 +1,17 @@
-<app-test [user]="user" (actionUser)="updateUser($event)"></app-test>
+<h4>Parent Component</h4>
+
+<button (click)="updateString()">Change String</button>
+
+<button (click)="updateNumber()">Change Number</button>
+
+<button (click)="updateBoolean()">Change Boolean</button>
+
+<button (click)="updateDate()">Change Date</button>
+
+
+
+<app-test [user]="user" [str]="str" [num]="num" [bool]="bool" [date]="date"
+(updateUser)="updateUser($event)" (createUser)="createUser($event)"></app-test>
 
 <app-second-test [user]="user"></app-second-test>
 
